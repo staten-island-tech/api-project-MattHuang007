@@ -21,7 +21,7 @@ async function getData(URL){
     document.querySelector("h2").textContent = data.author;
     }
     catch(error){
-        document.querySelector("h1").textContent = Error;
+        document.querySelector("h1").textContent = "Error";
     }
 };
 getData(URL);
