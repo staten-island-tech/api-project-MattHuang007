@@ -1,27 +1,32 @@
-async function getData(){
-  let res = await fetch(
-    "https://pokeapi.co/api/v2/"
-  );
-  let data= await res.json();
-  console.log(data);
-}
-getData();
-const URL='https://pokeapi.co/api/v2/';
+import "./style.css";
+import { cardSets, sortables } from "./filters";
 
-async function getData(URL){
-    try{
-    const response= await fetch(URL)
-    console.log(response);
-    if(response.status !=200){
-        throw new Error(response.statusText);
-    }
-    //take response from server and convert it to JSON
-    const data= await response.json();
-    document.querySelector("h1").textContent = data.content;
-    document.querySelector("h2").textContent = data.author;
-    }
-    catch(error){
-        document.querySelector("h1").textContent = "Error";
-    }
+const query = {
+  cardset: cardSets[0],
+  sort: sortables[0],
 };
-getData(URL);
+
+const app = document.querySelector("#app");
+
+// create filter form
+function createForm(field, options) {
+  const form = document.createElement("form");
+  form.innerHTML = `
+    <label for="${field}-filter">${field}:</label>
+      <select id="${field}-filter">
+        ${options
+          .map((option) => `<option value="${option}">${option}</option>`)
+          .join("\n")}
+      </select>
+  `;
+
+  form.onchange = (event) => {
+    console.log(event.target.value);
+    query[field] = event.target.value;
+    getCards();
+  };
+
+  app.appendChild(form);
+}
+createForm("cardset", cardSets);
+createForm("sort", sortables);
