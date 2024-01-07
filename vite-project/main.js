@@ -30,3 +30,24 @@ function createForm(field, options) {
 }
 createForm("cardset", cardSets);
 createForm("sort", sortables);
+const cardContainer = document.createElement("div");
+cardContainer.className = "card-container";
+
+app.appendChild(cardContainer);
+
+getCards(cardSets[0]); // default load
+
+async function getCards() {
+  const baseUrl = `https://db.ygoprodeck.com/api/v7/cardinfo.php?`;
+
+  try {
+    const response = await fetch(baseUrl + new URLSearchParams(query));
+    const responseData = await response.json();
+    const cards = responseData.data;
+
+    cardContainer.innerHTML = ""; // clear cards
+    cards.forEach(createCard);
+  } catch {
+    alert("Api does not have this card set");
+  }
+}
