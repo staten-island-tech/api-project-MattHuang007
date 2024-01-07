@@ -51,3 +51,9 @@ async function getCards() {
     alert("Api does not have this card set");
   }
 }
+function createCard(card) {
+  const cardDiv = document.createElement("img");
+  cardDiv.className = "small-card";
+  cardDiv.src = card.card_images[0].image_url_small;
+  cardContainer.appendChild(cardDiv);
+}
