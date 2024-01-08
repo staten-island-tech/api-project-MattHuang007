@@ -28,8 +28,8 @@ function createForm(field, options) {
 
   app.appendChild(form);
 }
-createForm("Cardset", cardSets);
-createForm("Sort", sortables);
+createForm("cardset", cardSets);
+createForm("sort", sortables);
 
 const cardContainer = document.createElement("div");
 cardContainer.className = "card-container";
