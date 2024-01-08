@@ -30,6 +30,7 @@ function createForm(field, options) {
 }
 createForm("cardset", cardSets);
 createForm("sort", sortables);
+
 const cardContainer = document.createElement("div");
 cardContainer.className = "card-container";
 
@@ -51,6 +52,7 @@ async function getCards() {
     alert("Api does not have this card set");
   }
 }
+
 function createCard(card) {
   const cardDiv = document.createElement("img");
   cardDiv.className = "small-card";
