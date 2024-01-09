@@ -59,3 +59,4 @@ function createCard(card) {
   cardDiv.src = card.card_images[0].image_url_small;
   cardContainer.appendChild(cardDiv);
 }
+
