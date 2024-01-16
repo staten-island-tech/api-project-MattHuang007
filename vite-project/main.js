@@ -57,6 +57,9 @@ function createCard(card) {
   const cardDiv = document.createElement("img");
   cardDiv.className = "small-card";
   cardDiv.src = card.card_images[0].image_url_small;
+  cardDiv.addEventListener("click", cardclick)
   cardContainer.appendChild(cardDiv);
 }
-
+function cardclick(){
+  console.log("click")
+}
