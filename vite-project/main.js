@@ -15,8 +15,8 @@ function createForm(field, options) {
     <label for="${field}-filter">${field}:</label>
       <select id="${field}-filter">
         ${options
-          .map((option) => `<option value="${option}">${option}</option>`)
-          .join("\n")}
+      .map((option) => `<option value="${option}">${option}</option>`)
+      .join("\n")}
       </select>
   `;
 
@@ -37,7 +37,8 @@ cardContainer.className = "card-container";
 app.appendChild(cardContainer);
 
 getCards(cardSets[0]); // default load
-
+const btn = document.getElementById("dialog-btn");
+btn.addEventListener("click", dialogclose)
 async function getCards() {
   const baseUrl = `https://db.ygoprodeck.com/api/v7/cardinfo.php?`;
 
@@ -57,9 +58,22 @@ function createCard(card) {
   const cardDiv = document.createElement("img");
   cardDiv.className = "small-card";
   cardDiv.src = card.card_images[0].image_url_small;
-  cardDiv.addEventListener("click", cardclick)
+  cardDiv.addEventListener("click", () => cardclick(card.card_images[0].image_url_small))
   cardContainer.appendChild(cardDiv);
 }
-function cardclick(){
+function cardclick(src) {
   console.log("click")
+  const cardDiv = document.createElement("img");
+  cardDiv.className = "big-card";
+  cardDiv.src = src
+  const dialog = document.getElementById("big");
+  const dialogdiv = document.getElementById("dialog-div");
+  dialogdiv.prepend(cardDiv); //appendchild but front instead of back
+  dialog.showModal()
+}
+function dialogclose() {
+  const dialogdiv = document.getElementById("dialog-div");
+  const dialog = document.getElementById("big");
+  dialogdiv.removeChild(dialogdiv.firstChild)
+  dialog.close()
 }
