@@ -29,9 +29,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #000;
+  /* background-color: #000;
   height: 100vh;
-  color: #ffffff;
+  color: #ffffff; */
 
 }
 
@@ -102,8 +102,8 @@ button:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   row-gap: 10px;
-  height: 75vh;
-  overflow-y: auto;
+  /* height: 75vh;
+  overflow-y: auto; */
 
 }
 

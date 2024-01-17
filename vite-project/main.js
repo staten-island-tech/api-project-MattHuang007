@@ -38,7 +38,7 @@ app.appendChild(cardContainer);
 
 getCards(cardSets[0]); // default load
 const btn = document.getElementById("dialog-btn");
-btn.addEventListener("click", dialogclose)
+btn.addEventListener("click", dialogClose)
 async function getCards() {
   const baseUrl = `https://db.ygoprodeck.com/api/v7/cardinfo.php?`;
 
@@ -59,25 +59,27 @@ function createCard(card) {
   cardDiv.className = "small-card";
   cardDiv.src = card.card_images[0].image_url_small;
   cardDiv.alt=card.name;
-  cardDiv.addEventListener("click", () => cardclick(card.card_images[0].image_url_small))
+  cardDiv.addEventListener("click", () => cardClick(card.card_images[0].image_url_small));
   cardContainer.appendChild(cardDiv);
 }
-function cardclick(src) {
+
+function cardClick(src) {
   console.log("click")
   const cardDiv = document.createElement("img");
   cardDiv.className = "big-card";
   cardDiv.src = src;
   cardDiv.alt="Yugi-oh card"; 
-  console.log(src)
+  console.log(src);
   const dialog = document.getElementById("big");
-  const dialogdiv = document.getElementById("dialog-div");
-  dialogdiv.prepend(cardDiv); //appendchild but front instead of back
-  dialog.showModal()
+  const dialogDiv = document.getElementById("dialog-div");
+  dialogDiv.prepend(cardDiv); //appendchild but front instead of back
+  dialog.showModal();
 }
-function dialogclose() {
-  const dialogdiv = document.getElementById("dialog-div");
+
+function dialogClose() {
+  const dialogDiv = document.getElementById("dialog-div");
   const dialog = document.getElementById("big");
-  dialogdiv.removeChild(dialogdiv.firstChild)
-  dialog.close()
+  dialogDiv.removeChild(dialogDiv.firstChild);
+  dialog.close();
 }
 
