@@ -12,7 +12,7 @@ const app = document.querySelector("#app");
 function createForm(field, options) {
   const form = document.createElement("form");
   form.innerHTML = `
-    <label for="${field}-filter">${field}:</label>
+    <label for="${field}-filter">${field}:</label> 
       <select id="${field}-filter">
         ${options
       .map((option) => `<option value="${option}">${option}</option>`)
@@ -58,6 +58,7 @@ function createCard(card) {
   const cardDiv = document.createElement("img");
   cardDiv.className = "small-card";
   cardDiv.src = card.card_images[0].image_url_small;
+  cardDiv.alt=card.name;
   cardDiv.addEventListener("click", () => cardclick(card.card_images[0].image_url_small))
   cardContainer.appendChild(cardDiv);
 }
@@ -65,7 +66,9 @@ function cardclick(src) {
   console.log("click")
   const cardDiv = document.createElement("img");
   cardDiv.className = "big-card";
-  cardDiv.src = src
+  cardDiv.src = src;
+  cardDiv.alt="Yugi-oh card"; 
+  console.log(src)
   const dialog = document.getElementById("big");
   const dialogdiv = document.getElementById("dialog-div");
   dialogdiv.prepend(cardDiv); //appendchild but front instead of back
@@ -77,3 +80,4 @@ function dialogclose() {
   dialogdiv.removeChild(dialogdiv.firstChild)
   dialog.close()
 }
+
