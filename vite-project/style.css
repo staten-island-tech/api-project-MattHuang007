@@ -32,7 +32,6 @@ body {
   /* background-color: #000;
   height: 100vh;
   color: #ffffff; */
-
 }
 
 h1 {
@@ -104,7 +103,6 @@ button:focus-visible {
   row-gap: 10px;
   /* height: 75vh;
   overflow-y: auto; */
-
 }
 
 .small-card {
